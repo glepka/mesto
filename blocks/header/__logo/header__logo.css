@@ -2,3 +2,16 @@
   height: 33px;
   width: 142px;
 }
+
+@media (max-width: 900px) {
+  .header__logo {
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header__logo {
+    width: 104px;
+    height: 24px;
+  }
+}

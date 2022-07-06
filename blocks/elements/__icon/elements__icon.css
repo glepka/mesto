@@ -1,0 +1,18 @@
+.elements__icon {
+  background-image: url(../../../images/heart.svg);
+  width: 20px;
+  height: 19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
+.elements__icon:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.elements__icon:active {
+  opacity: 1;
+  background-image: url(../../../images/heart_active.svg);
+}

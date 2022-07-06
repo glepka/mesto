@@ -8,3 +8,10 @@
   color: #ffffff;
   margin-right: 18px;
 }
+
+@media (max-width: 360px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
+}

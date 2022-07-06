@@ -1,0 +1,22 @@
+.form__text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  font-size: 14px;
+  max-width: 358px;
+  min-height: 40px;
+  border-style: none;
+  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+}
+
+.form__text:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media (max-width: 600px) {
+  .form__text {
+    max-width: 238px;
+  }
+}

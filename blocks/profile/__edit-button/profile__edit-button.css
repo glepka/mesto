@@ -5,4 +5,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
+}
+
+.profile__edit-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+@media (max-width: 360px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
 }

@@ -7,20 +7,34 @@
     <title>Mesto</title>
   </head>
   <body class="page">
+    <section class="popup">
+        <div class="popup__container">  
+            <div class="popup__cross"></div>          
+            <div class="form">
+                <h2 class="form__title">Редактировать профиль</h2>                
+                    <input type="text" placeholder="Имя" class="form__text form__text_type_name">
+                    <input type="text" placeholder="Профессия" class="form__text form__text_type_profession">
+                    <button class="form__submit-btn form__submit-btn_action_save">
+                      Сохранить
+                    </button>                   
+                </div>
+        </div>
+    </section>
     <div class="page__container">
         <header class="header page__header">
             <img src="./images/logo.svg" class="header__logo"></img>
             <div class="header__line"></div>
           </header>
           <main>
-            <section class="profile">
+            
+            <section class="profile page__profile">
                 <div class="profile__user">
                     <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
                     <div class="profile__info">
                         <div class="profile__title">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
                             <div class="profile__edit-button">
-                                <img src="./images/pencil.svg" alt="Карандаш">
+                                <img src="./images/pencil.svg" alt="Карандаш" class="profile__icon">
                             </div>
                         </div>
                         <p class="profile__subtitle">Исследователь океана</p>
@@ -29,10 +43,55 @@
                 <div class="profile__add-button">
                     <img src="./images/plus.svg" alt="Плюс" >
                 </div>
-
-
+            </section>
+            <section class="elements page__elements">
+                <div class="elements__element">
+                    <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="elements__image">
+                    <div class="elements__description">
+                        <h2 class="elements__title">Карачаевск</h2>
+                        <div class="elements__icon"></div>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img src="./images/dombay.png" alt="Домбай" class="elements__image">
+                    <div class="elements__description">
+                        <h2 class="elements__title">Домбай</h2>
+                        <div class="elements__icon"></div>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img src="./images/elbrus.png" alt="Эльбрус" class="elements__image">
+                    <div class="elements__description">
+                        <h2 class="elements__title">Эльбрус</h2>
+                        <div class="elements__icon"></div>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img src="./images/dombay.png" alt="Домбай" class="elements__image">
+                    <div class="elements__description">
+                        <h2 class="elements__title">Домбай</h2>
+                        <div class="elements__icon"></div>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img src="./images/elbrus.png" alt="Эльбрус" class="elements__image">
+                    <div class="elements__description">
+                        <h2 class="elements__title">Эльбрус</h2>
+                        <div class="elements__icon"></div>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img src="./images/karachaevsk.jpg" alt="Карачаево-Черкесия" class="elements__image">
+                    <div class="elements__description">
+                        <h2 class="elements__title">Карачаево-Черкесия</h2>
+                        <div class="elements__icon"></div>
+                    </div>
+                </div>
             </section>
           </main>
+          <footer class="page__footer">
+            <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+          </footer>
 
 
 

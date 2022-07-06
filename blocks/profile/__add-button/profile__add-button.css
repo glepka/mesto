@@ -7,4 +7,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
+}
+
+.profile__add-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .profile__add-button {
+    width: 282px;
+    height: 50px;
+  }
 }
