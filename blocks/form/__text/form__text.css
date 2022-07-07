@@ -7,7 +7,7 @@
   max-width: 358px;
   min-height: 40px;
   border-style: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 
@@ -18,5 +18,9 @@
 @media (max-width: 600px) {
   .form__text {
     max-width: 238px;
+    margin-bottom: 17px;
+  }
+  .form__text:last-of-type {
+    margin-bottom: 40px;
   }
 }

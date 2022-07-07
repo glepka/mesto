@@ -8,11 +8,12 @@
   top: -40px;
   right: -40px;
   z-index: 2;
+  background-color: transparent;
 }
 
 .popup__cross:hover {
   cursor: pointer;
-  background-image: url(../../../images/cross_hover.svg);
+  opacity: 0.6;
 }
 
 @media (max-width: 600px) {

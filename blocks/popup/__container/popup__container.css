@@ -1,7 +1,8 @@
 .popup__container {
   background-color: #fff;
   width: 430px;
-  height: 330px;
+  padding-bottom: 37px;
+  padding-top: 24px;
   position: relative;
   border-radius: 10px;
 }
@@ -9,6 +10,7 @@
 @media (max-width: 600px) {
   .popup__container {
     width: 282px;
-    height: 322px;
+    padding-bottom: 25px;
+    padding-top: 25px;
   }
 }

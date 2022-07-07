@@ -1,3 +1,9 @@
 .page__footer {
   margin-bottom: 60px;
 }
+
+@media (max-width: 500px) {
+  .page__footer {
+    margin-bottom: 36px;
+  }
+}
