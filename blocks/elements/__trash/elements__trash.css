@@ -6,7 +6,6 @@
   top: 20px;
   right: 20px;
   background-size: contain;
-  z-index: 1;
 }
 
 .elements__trash:hover {

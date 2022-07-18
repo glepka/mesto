@@ -1,30 +1,41 @@
-let popup = document.querySelector(".popup");
-let popupCross = document.querySelector(".popup__cross");
-let editButton = document.querySelector(".profile__edit-button");
+const popupProfile = document.querySelector(".popup_type_profile");
+const popupPlace = document.querySelector(".popup_type_place");
+const popupImage = document.querySelector(".popup_type_image");
 
-let nameInput = document.querySelector(".form__text_type_name");
-let professionInput = document.querySelector(".form__text_type_profession");
+const popupCrossProfile = document.querySelector(".popup__cross_type_profile");
+const popupCrossPlace = document.querySelector(".popup__cross_type_place");
+const popupCrossImage = document.querySelector(".popup__cross_type_image");
 
-let profileName = document.querySelector(".profile__name");
-let profileProfession = document.querySelector(".profile__subtitle");
+const editButton = document.querySelector(".profile__edit-button");
+const addButton = document.querySelector(".profile__add-button");
+const imageOfElement = document.querySelector(".elements__image");
+const likeButtons = document.querySelectorAll(".elements__icon");
 
-let formElement = document.querySelector(".form");
+const nameInput = document.querySelector(".form__text_type_name");
+const professionInput = document.querySelector(".form__text_type_profession");
+
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__subtitle");
+
+const formElement = document.querySelector(".form");
+
+// ПРОФИЛЬ
 
 // Открыть попап профиля
 
-function openPopup() {
-  popup.classList.add("popup_opened");
+function openPopupProfile() {
+  popupProfile.classList.add("popup_opened");
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 }
-editButton.addEventListener("click", openPopup);
+editButton.addEventListener("click", openPopupProfile);
 
 // Закрыть попап профиля
 
-function closePopup() {
-  popup.classList.remove("popup_opened");
+function closePopupProfile() {
+  popupProfile.classList.remove("popup_opened");
 }
-popupCross.addEventListener("click", closePopup);
+popupCrossProfile.addEventListener("click", closePopupProfile);
 
 // Изменить имя и профессию в профиле
 
@@ -37,3 +48,45 @@ function formSubmitHandler(evt) {
 }
 
 formElement.addEventListener("submit", formSubmitHandler);
+
+// МЕСТО
+
+// Открыть попап места
+
+function openPopupPlace() {
+  popupPlace.classList.add("popup_opened");
+}
+addButton.addEventListener("click", openPopupPlace);
+
+// Закрыть попап места
+
+function closePopupPlace() {
+  popupPlace.classList.remove("popup_opened");
+}
+popupCrossPlace.addEventListener("click", closePopupPlace);
+
+//ПРОСМОТР КАРТИНКИ
+
+//Открыть картинку
+
+function openPopupImage() {
+  popupImage.classList.add("popup_opened");
+}
+imageOfElement.addEventListener("click", openPopupImage);
+
+// Закрыть картинку
+
+function closePopupImage() {
+  popupImage.classList.remove("popup_opened");
+}
+popupCrossImage.addEventListener("click", closePopupImage);
+
+// ИКОНКА ЛАЙКА
+
+function toggleLike() {
+  this.classList.toggle("elements__icon_type_active");
+}
+
+likeButtons.forEach((btn) => {
+  btn.addEventListener("click", toggleLike);
+});

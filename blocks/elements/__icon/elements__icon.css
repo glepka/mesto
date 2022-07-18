@@ -13,8 +13,3 @@
   cursor: pointer;
   opacity: 0.5;
 }
-
-.elements__icon:active {
-  opacity: 1;
-  background-image: url(../../../images/heart_active.svg);
-}
