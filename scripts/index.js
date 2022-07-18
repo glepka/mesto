@@ -10,7 +10,7 @@ let profileProfession = document.querySelector(".profile__subtitle");
 
 let formElement = document.querySelector(".form");
 
-// Открыть попап
+// Открыть попап профиля
 
 function openPopup() {
   popup.classList.add("popup_opened");
@@ -19,7 +19,7 @@ function openPopup() {
 }
 editButton.addEventListener("click", openPopup);
 
-// Закрыть попап
+// Закрыть попап профиля
 
 function closePopup() {
   popup.classList.remove("popup_opened");
