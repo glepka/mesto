@@ -46,7 +46,7 @@
           </button>
         </section>
         <section class="elements page__elements">
-          <div class="elements__element">
+          <!-- <div class="elements__element">
             <div class="elements__trash"></div>
             <img
               src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg"
@@ -125,8 +125,8 @@
                 aria-label="Поставить лайк"
               ></button>
             </div>
-          </div>
-          <div class="elements__element">
+           </div> -->
+          <!-- <div class="elements__element">
             <div class="elements__trash"></div>
             <img
               src="./images/karachaevsk.jpg"
@@ -141,7 +141,7 @@
                 aria-label="Поставить лайк"
               ></button>
             </div>
-          </div>
+          </div> -->
         </section>
       </main>
       <footer class="page__footer footer">
@@ -184,7 +184,7 @@
             aria-label="Закрыть форму"
             type="button"
           ></button>
-          <form class="form" name="profile-form" method="post">
+          <form class="form form-place" name="profile-form" method="post">
             <h2 class="form__title">Новое место</h2>
             <input
               type="text"
@@ -214,15 +214,28 @@
             aria-label="Закрыть форму"
             type="button"
           ></button>
-          <img
-            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"
-            alt=""
-            class="popup__image"
-          />
-          <p class="popup__image-text">Домбай</p>
+          <img class="popup__image" />
+          <p class="popup__image-text"></p>
         </div>
       </div>
     </div>
+
+    <template id="place">
+      <div class="elements__template">
+        <div class="elements__element">
+          <div class="elements__trash"></div>
+          <img src="" class="elements__image" />
+          <div class="elements__description">
+            <h2 class="elements__title"></h2>
+            <button
+              class="elements__icon"
+              type="button"
+              aria-label="Поставить лайк"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </template>
 
     <script src="./scripts/index.js"></script>
   </body>
