@@ -1,72 +1,79 @@
+const page = document.querySelector(".page");
+
+const elements = document.querySelector(".elements");
+const element = document.querySelector(".elements__element");
+//ПОПАПЫ
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupPlace = document.querySelector(".popup_type_place");
+const popupImage = document.querySelector(".popup_type_image");
 
-const popupCrossProfile = document.querySelector(".popup__cross_type_profile");
-const popupCrossPlace = document.querySelector(".popup__cross_type_place");
-const popupCrossImage = document.querySelector(".popup__cross_type_image");
-
+// КНОПКИ ОТКРЫТИЯ ПОПАПОВ
 const editButton = document.querySelector(".profile__edit-button");
-const addButton = document.querySelector(".profile__add-button");
+const addPlaceButton = document.querySelector(".profile__add-button");
+const gridImage = document.querySelectorAll(".elements__image");
 
+//ДАННЫЕ ДЛЯ ПОПАПА КАРТИНКИ
+const popupImageSrc = document.querySelector(".popup__image");
+const popupImageText = document.querySelector(".popup__image-text");
+
+//КНОПКИ ЛАЙКА
 const likeButtons = document.querySelectorAll(".elements__icon");
 
+// ДАННЫЕ ПРОФИЛЯ, КОТОРЫЕ ВВОДИТ ПОЛЬЗОВАТЕЛЬ
 const nameInput = document.querySelector(".form__text_type_name");
 const professionInput = document.querySelector(".form__text_type_profession");
 
+// ДАННЫЕ ПРОФИЛЯ
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__subtitle");
 
+// ФОРМЫ
 const formElement = document.querySelector(".form");
 const formElementPlace = document.querySelector(".form-place");
 
-// ПРОФИЛЬ
+// Закрыть попап
 
-// Открыть попап профиля
+function closePopup(item) {
+  item.classList.remove("popup_opened");
+}
 
-function openPopupProfile() {
-  popupProfile.classList.add("popup_opened");
+function closePopupButtonClick(evt) {
+  const closeBtn = evt.target;
+  if (closeBtn.classList.contains("popup__cross")) {
+    closeBtn.closest(".popup").classList.remove("popup_opened");
+  }
+}
+page.addEventListener("click", closePopupButtonClick);
+
+// ОТКРЫТЬ ПОПАП
+
+function openPopup(item) {
+  item.classList.add("popup_opened");
+}
+
+// ОТРЫТЬ ПОПАП ПРОФИЛЯ
+
+editButton.addEventListener("click", function () {
+  openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
-}
-editButton.addEventListener("click", openPopupProfile);
+});
 
-// Закрыть попап профиля
-
-function closePopupProfile() {
-  popupProfile.classList.remove("popup_opened");
-}
-popupCrossProfile.addEventListener("click", closePopupProfile);
+// ОТКРЫТЬ ПОПАП МЕСТА
+addPlaceButton.addEventListener("click", () => openPopup(popupPlace));
 
 // Изменить имя и профессию в профиле
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
-  closePopup();
+  closePopup(popupProfile);
 }
-
 formElement.addEventListener("submit", formSubmitHandler);
 
-// МЕСТО
-
-// Открыть попап места
-
-function openPopupPlace() {
-  popupPlace.classList.add("popup_opened");
-}
-addButton.addEventListener("click", openPopupPlace);
-
-// Закрыть попап места
-
-function closePopupPlace() {
-  popupPlace.classList.remove("popup_opened");
-}
-popupCrossPlace.addEventListener("click", closePopupPlace);
-
 // КАРТОЧКИ
-const placeOnline = document.querySelector(".elements");
+
 const placeTemplate = document.querySelector("#place").content;
 const initialCards = [
   {
@@ -101,64 +108,57 @@ function addCards(item) {
   const placeElement = placeTemplate
     .querySelector(".elements__template")
     .cloneNode(true);
-
   placeElement.querySelector(".elements__image").src = item.link;
   placeElement.querySelector(".elements__title").textContent = item.name;
-
-  placeOnline.append(placeElement);
+  elements.append(placeElement);
 }
 initialCards.forEach(addCards);
+
 // Добавить новую карточку
 
-function formSubmitPlace(evt) {
+function addPlaceCard(evt) {
   evt.preventDefault();
   const placeInput = document.querySelector(".form__text_type_place").value;
   const imageLinkImput = document.querySelector(".form__text_type_link").value;
   const placeElement = placeTemplate
     .querySelector(".elements__template")
     .cloneNode(true);
-
   initialCards.push({ name: placeInput, link: imageLinkImput });
   item = initialCards[initialCards.length - 1];
   placeElement.querySelector(".elements__image").src = item.link;
   placeElement.querySelector(".elements__title").textContent = item.name;
+  elements.prepend(placeElement);
+  closePopup(popupPlace);
+}
+formElementPlace.addEventListener("submit", addPlaceCard);
 
-  placeOnline.prepend(placeElement);
+// ПРОВЕРЯЕМ КУДА КЛИКНУЛИ
+elements.onclick = function (event) {
+  const target = event.target;
+  if (target.classList.contains("elements__icon")) {
+    addOrRemoveLike(target);
+  } else if (target.classList.contains("elements__image")) {
+    openPopupImage(target);
+  } else if (target.classList.contains("elements__trash")) {
+    deleteCard(target);
+  } else return;
+};
 
-  closePopupPlace();
+// ПОСТАВИТЬ И УБРАТЬ ЛАЙК
+
+function addOrRemoveLike(btn) {
+  btn.classList.toggle("elements__icon_type_active");
+}
+// УДАЛИТЬ КАРТОЧКУ
+
+function deleteCard(btn) {
+  btn.closest(".elements__template").remove();
 }
 
-formElementPlace.addEventListener("submit", formSubmitPlace);
+// КОГДА НАЖАЛ НА КАРТИНКУ
 
-//ПРОСМОТР КАРТИНКИ
-
-//Открыть картинку
-const popupImage = document.querySelector(".popup_type_image");
-const imageOfElement = document.querySelector(".elements__image");
-const popupImageSrc = document.querySelector(".popup__image");
-const popupImageText = document.querySelector(".popup__image-text");
-
-function openPopupImage() {
-  popupImage.classList.add("popup_opened");
-
-  popupImageSrc.src = this.src;
-  popupImageText.textContent = placeElement.textContent;
+function openPopupImage(img) {
+  openPopup(popupImage);
+  popupImageSrc.src = img.src;
+  // popupImageText.textContent = imageTitle.textContent;
 }
-console.log(imageOfElement);
-imageOfElement.addEventListener("click", openPopupImage);
-
-// Закрыть картинку
-
-function closePopupImage() {
-  popupImage.classList.remove("popup_opened");
-}
-popupCrossImage.addEventListener("click", closePopupImage);
-
-// ИКОНКА ЛАЙКА
-function toggleLike() {
-  this.classList.toggle("elements__icon_type_active");
-}
-
-likeButtons.forEach((btn) => {
-  btn.addEventListener("click", toggleLike);
-});

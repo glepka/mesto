@@ -3,7 +3,9 @@
   width: 430px;
   padding-bottom: 37px;
   padding-top: 24px;
-  position: relative;
+  position: absolute;
+  top: calc(50% - 115px);
+  left: calc(50% - 215px);
   border-radius: 10px;
 }
 
@@ -12,5 +14,7 @@
     width: 282px;
     padding-bottom: 25px;
     padding-top: 25px;
+    top: calc(50% - 161px);
+    left: calc(50% - 141px);
   }
 }
