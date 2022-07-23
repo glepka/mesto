@@ -1,5 +1,3 @@
-const page = document.querySelector(".page");
-
 const elements = document.querySelector(".elements");
 
 const cardTemplate = document.querySelector(".card").content;
@@ -12,8 +10,6 @@ const popupTypeImage = document.querySelector(".popup_type_image");
 // ДЛЯ ОТКРЫТИЯ ПОПАПОВ
 const editButton = document.querySelector(".profile__edit-button");
 const addPlaceButton = document.querySelector(".profile__add-button");
-//Картинка карточки
-const cardImg = document.querySelectorAll(".elements__image");
 
 //ДАННЫЕ ДЛЯ ПОПАПА КАРТИНКИ
 const popupImage = document.querySelector(".popup__image");
@@ -28,8 +24,12 @@ const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__subtitle");
 
 // ФОРМЫ
-const formElement = document.querySelector(".form");
-const formElementPlace = document.querySelector(".form-place");
+const profileForm = document.querySelector(".form-profile");
+const placeForm = document.querySelector(".form-place");
+
+// ИНПУТЫ ПОПАПА ДОБАВЛЕНИЯ МЕСТА
+const placeInputText = document.querySelector(".form__text_type_place");
+const placeInputLink = document.querySelector(".form__text_type_link");
 
 // Закрыть попап
 
@@ -38,12 +38,16 @@ function closePopup(item) {
 }
 
 function closePopupButtonClick(evt) {
-  const closeBtn = evt.target;
-  if (closeBtn.classList.contains("popup__cross")) {
-    closeBtn.closest(".popup").classList.remove("popup_opened");
-  }
+  const closeButtons = document.querySelectorAll(".popup__cross");
+
+  closeButtons.forEach((button) => {
+    // находим 1 раз ближайший к крестику попап
+    const popup = button.closest(".popup");
+    // устанавливаем обработчик закрытия на крестик
+    button.addEventListener("click", () => closePopup(popup));
+  });
 }
-page.addEventListener("click", closePopupButtonClick);
+elements.addEventListener("click", closePopupButtonClick);
 
 // ОТКРЫТЬ ПОПАП
 
@@ -64,13 +68,13 @@ addPlaceButton.addEventListener("click", () => openPopup(popupTypePlace));
 
 // Изменить имя и профессию в профиле
 
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
   closePopup(popupTypeProfile);
 }
-formElement.addEventListener("submit", formSubmitHandler);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 // КАРТОЧКИ
 const initialCards = [
@@ -114,7 +118,7 @@ function createCard(title, src) {
     .addEventListener("click", () => deleteCard(card));
   card
     .querySelector(".elements__icon")
-    .addEventListener("click", () => addOrRemoveLike(card));
+    .addEventListener("click", () => toggleLike(card));
 
   console.log(card);
   return card;
@@ -123,8 +127,8 @@ function createCard(title, src) {
 //ДОБАВИТЬ 6 НАЧАЛЬНЫХ КАРТОЧЕК
 function addInitialCards() {
   initialCards.forEach(function (item) {
-    src = item.link;
-    title = item.name;
+    const src = item.link;
+    const title = item.name;
     renderCards(title, src, elements, "append");
   });
 }
@@ -133,13 +137,13 @@ addInitialCards();
 // ДОБАВИТЬ СОБСТВЕННУЮ КАРТОЧКУ
 function addPlaceCard(evt) {
   evt.preventDefault();
-  title = document.querySelector(".form__text_type_place").value;
-  src = document.querySelector(".form__text_type_link").value;
+  const title = placeInputText.value;
+  const src = placeInputLink.value;
 
   renderCards(title, src, elements);
   closePopup(popupTypePlace);
 }
-formElementPlace.addEventListener("submit", addPlaceCard);
+placeForm.addEventListener("submit", addPlaceCard);
 
 // РЕНДЕР КАРТОЧЕК
 function renderCards(title, src, container, position = "prepend") {
@@ -155,15 +159,15 @@ function renderCards(title, src, container, position = "prepend") {
 }
 // ПОСТАВИТЬ И УБРАТЬ ЛАЙК
 
-function addOrRemoveLike(card) {
-  btn = card.querySelector(".elements__icon");
+function toggleLike(card) {
+  const btn = card.querySelector(".elements__icon");
   btn.classList.toggle("elements__icon_type_active");
 }
 
 // УДАЛИТЬ КАРТОЧКУ
 
 function deleteCard(card) {
-  btn = card.querySelector(".elements__trash");
+  const btn = card.querySelector(".elements__trash");
   btn.closest(".elements__element").remove();
 }
 
