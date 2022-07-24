@@ -24,8 +24,8 @@ const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__subtitle");
 
 // ФОРМЫ
-const profileForm = document.querySelector(".form-profile");
-const placeForm = document.querySelector(".form-place");
+const profileForm = popupTypeProfile.querySelector(".form-profile");
+const placeForm = popupTypePlace.querySelector(".form-place");
 
 // ИНПУТЫ ПОПАПА ДОБАВЛЕНИЯ МЕСТА
 const placeInputText = document.querySelector(".form__text_type_place");
@@ -37,7 +37,7 @@ function closePopup(item) {
   item.classList.remove("popup_opened");
 }
 
-function closePopupButtonClick(evt) {
+function closePopupButtonClick() {
   const closeButtons = document.querySelectorAll(".popup__cross");
 
   closeButtons.forEach((button) => {
@@ -47,8 +47,7 @@ function closePopupButtonClick(evt) {
     button.addEventListener("click", () => closePopup(popup));
   });
 }
-elements.addEventListener("click", closePopupButtonClick);
-
+closePopupButtonClick();
 // ОТКРЫТЬ ПОПАП
 
 function openPopup(item) {
@@ -120,7 +119,6 @@ function createCard(title, src) {
     .querySelector(".elements__icon")
     .addEventListener("click", () => toggleLike(card));
 
-  console.log(card);
   return card;
 }
 
