@@ -140,6 +140,7 @@ function addPlaceCard(evt) {
 
   renderCards(title, src, elements);
   closePopup(popupTypePlace);
+  evt.target.reset();
 }
 placeForm.addEventListener("submit", addPlaceCard);
 
