@@ -53,10 +53,17 @@ closePopupButtonClick();
 
 // Закрыть попап по оверлею
 popupOverlay.forEach((popup) => {
-  // добавим каждой обработчик лайка
-  popup.addEventListener("click", function (evt) {
+  popup.addEventListener("click", () => {
     closePopup(popup);
   });
+});
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.keyCode === 27) {
+    console.log(evt.keyCode);
+    const popupActive = document.querySelector(".popup_opened");
+    closePopup(popupActive);
+  }
 });
 
 // ОТКРЫТЬ ПОПАП
