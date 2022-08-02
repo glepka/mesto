@@ -3,6 +3,7 @@ const elements = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".card").content;
 
 //ПОПАПЫ
+const popupOverlay = document.querySelectorAll(".popup");
 const popupTypeProfile = document.querySelector(".popup_type_profile");
 const popupTypePlace = document.querySelector(".popup_type_place");
 const popupTypeImage = document.querySelector(".popup_type_image");
@@ -37,17 +38,27 @@ function closePopup(item) {
   item.classList.remove("popup_opened");
 }
 
+// Закрыть попап по кнопке
 function closePopupButtonClick() {
   const closeButtons = document.querySelectorAll(".popup__cross");
 
   closeButtons.forEach((button) => {
     // находим 1 раз ближайший к крестику попап
-    const popup = button.closest(".popup");
+    const closestPopup = button.closest(".popup");
     // устанавливаем обработчик закрытия на крестик
-    button.addEventListener("click", () => closePopup(popup));
+    button.addEventListener("click", () => closePopup(closestPopup));
   });
 }
 closePopupButtonClick();
+
+// Закрыть попап по оверлею
+popupOverlay.forEach((popup) => {
+  // добавим каждой обработчик лайка
+  popup.addEventListener("click", function (evt) {
+    closePopup(popup);
+  });
+});
+
 // ОТКРЫТЬ ПОПАП
 
 function openPopup(item) {
