@@ -17,6 +17,10 @@
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__text/form__text.css);
 @import url(../blocks/form/__submit-btn/form__submit-btn.css);
+@import url(../blocks/form/__text/_type/form__text_type_error.css);
+@import url(../blocks/form/__field/form__field.css);
+@import url(../blocks/form/__submit-btn/_type/form__submit-btn_type_disabled.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
 
 /* PAGE */
 @import url(../blocks/page/page.css);
@@ -53,4 +57,4 @@
 
 /* FOOTER */
 
-@import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css); ;

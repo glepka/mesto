@@ -53,8 +53,8 @@ closePopupButtonClick();
 
 // Закрыть попап по оверлею
 popupOverlay.forEach((popup) => {
-  popup.addEventListener("click", () => {
-    closePopup(popup);
+  popup.addEventListener("click", (evt) => {
+    closePopup(evt.target);
   });
 });
 
