@@ -11,10 +11,6 @@
   box-sizing: border-box;
 }
 
-.form__text:last-of-type {
-  margin-bottom: 48px;
-}
-
 @media (max-width: 600px) {
   .form__text {
     max-width: 238px;
