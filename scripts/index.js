@@ -29,8 +29,6 @@ const initialCards = [
   },
 ];
 
-const ESC_CODE = "Escape";
-
 // КОНФИГ ФОРМЫ
 const validationConfig = {
   formSelector: ".form",
@@ -41,14 +39,9 @@ const validationConfig = {
   errorClass: ".form__text_type_error",
 };
 
-// ВАЛИДАЦИЯ ФОРМЫ
-const formProfile = document.querySelector(".form-profile");
-const formValidProfile = new FormValidator(validationConfig, formProfile);
-formValidProfile.enableValidation();
-const formPlace = document.querySelector(".form-place");
-const formValidPlace = new FormValidator(validationConfig, formPlace);
-formValidPlace.enableValidation();
-
+// ПЕРЕМЕННЫЕ
+// ------------------------
+const ESC_CODE = "Escape";
 const elements = document.querySelector(".elements");
 
 //ПОПАПЫ
@@ -80,6 +73,17 @@ const placeForm = popupTypePlace.querySelector(".form-place");
 // ИНПУТЫ ПОПАПА ДОБАВЛЕНИЯ МЕСТА
 const placeInputText = document.querySelector(".form__text_type_place");
 const placeInputLink = document.querySelector(".form__text_type_link");
+
+// ВАЛИДАЦИЯ ФОРМЫ
+
+const formValidProfile = new FormValidator(validationConfig, profileForm);
+formValidProfile.enableValidation();
+
+const formValidPlace = new FormValidator(validationConfig, placeForm);
+formValidPlace.enableValidation();
+
+// ФУНКЦИИ
+// ----------------------------------------------
 
 // Закрыть попап
 

@@ -9,52 +9,41 @@ export class FormValidator {
     const inputList = Array.from(
       this._formElement.querySelectorAll(this._validationConfig.inputSelector)
     );
-    console.log(inputList);
+
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        this._isValid();
+        this._isValid(inputElement);
         this._toggleButtonState();
       });
     });
   }
 
   // ПРОВЕРКА НА ВАЛИДНОСТЬ
-  _isValid() {
-    if (
-      !this._formElement.querySelector(this._validationConfig.inputSelector)
-        .validity.valid
-    ) {
-      this._showInputError();
+  _isValid(inputElement) {
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement);
     } else {
-      this._hideInputError();
+      this._hideInputError(inputElement);
     }
   }
   // УБРАТЬ СООБЩЕНИЕ ОБ ОШИБКЕ
-  _hideInputError() {
+  _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
-      `.${
-        this._formElement.querySelector(this._validationConfig.inputSelector).id
-      }-error`
+      `.${inputElement.id}-error`
     );
 
-    this._formElement
-      .querySelector(this._validationConfig.inputSelector)
-      .classList.remove(this._validationConfig.errorClass);
+    inputElement.classList.remove(this._validationConfig.errorClass);
     errorElement.classList.remove(this._validationConfig.inputErrorClass);
     errorElement.textContent = "";
   }
 
   // ПОКАЗАТЬ СООБЩЕНИЕ ОБ ОШИБКЕ
-  _showInputError() {
+  _showInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
-      `.${
-        this._formElement.querySelector(this._validationConfig.inputSelector).id
-      }-error`
+      `.${inputElement.id}-error`
     );
 
-    const errorMessage = this._formElement.querySelector(
-      this._validationConfig.inputSelector
-    ).validationMessage;
+    const errorMessage = inputElement.validationMessage;
 
     this._formElement
       .querySelector(this._validationConfig.inputSelector)
@@ -97,13 +86,3 @@ export class FormValidator {
     this._setEventListeners();
   }
 }
-
-// КОНФИГ ФОРМЫ
-const validationConfig = {
-  formSelector: ".form",
-  inputSelector: ".form__text",
-  submitButtonSelector: ".form__submit-btn",
-  inactiveButtonClass: "form__submit-btn_type_disabled",
-  inputErrorClass: ".form__input-error",
-  errorClass: ".form__text_type_error",
-};
