@@ -35,8 +35,8 @@ const validationConfig = {
   inputSelector: ".form__text",
   submitButtonSelector: ".form__submit-btn",
   inactiveButtonClass: "form__submit-btn_type_disabled",
-  inputErrorClass: ".form__input-error",
-  errorClass: ".form__text_type_error",
+  inputErrorClass: "form__input-error",
+  errorClass: "form__text_type_error",
 };
 
 // ПЕРЕМЕННЫЕ
