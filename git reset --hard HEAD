@@ -1,0 +1,159 @@
+[33mcommit c5ccd3c4d12ca0bb5b8eceb34e2905ccd5269f5e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Aug 5 16:17:23 2022 +0300
+
+    Исправлены ошибки 1 итерации
+
+[33mcommit 88f2dda2213eb6b18002a091d876132712aaeccb[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Aug 5 15:18:20 2022 +0300
+
+    Исправлены ошибки валидатора Практикума
+
+[33mcommit eb26e26a944ab1569a03db8c852c30127bf5259a[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Aug 5 15:16:32 2022 +0300
+
+    Реализован весь функционал согласно ТЗ
+
+[33mcommit 0c5d225642b6987fd8208e8c60d95327f5fe0824[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Wed Aug 3 15:57:17 2022 +0300
+
+    Реализована валидация форм
+
+[33mcommit 6f3fb4fcdaf20ca502bec2b310c00c50108c8c9a[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Tue Aug 2 15:20:56 2022 +0300
+
+    Реализовано закрытие по esc
+
+[33mcommit 3cc3f2186ba9c94f582b5baa643506b8fdc81e3b[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Tue Aug 2 14:55:29 2022 +0300
+
+    Рализовано закрытие по оверлею
+
+[33mcommit c6586c27b2824e6efbfad51202adb3025943454c[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Sun Jul 24 19:34:09 2022 +0300
+
+    Исправлены ошибки 3 ревью.
+
+[33mcommit ac1cda378a827264d73a735d12209994b7e267a0[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Sun Jul 24 13:05:13 2022 +0300
+
+    Исправлены ошибки второго ревью.
+
+[33mcommit 7408808b1c3b4fa11e03ddda4942d02b934e3a12[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Sat Jul 23 14:25:13 2022 +0300
+
+    Исправлены ошибки 1 ревью
+
+[33mcommit 222c83a5d443290b9fbc553a0514e38f5c1ba007[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Jul 22 16:02:02 2022 +0300
+
+    Исправлены ошибки валидатора Практикума.
+
+[33mcommit abecd9b13b67023b16d1cc83920a43b37cd624e4[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Jul 22 15:59:15 2022 +0300
+
+    Изменена логика в JS файле. Все работает.
+
+[33mcommit 98456bd0ea12d42e38dd396eafecf782eb2df266[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Thu Jul 21 00:34:37 2022 +0300
+
+    Удаление карточек, попапы картинок, плавное откры
+
+[33mcommit 76e4d45711254a037b4a940edbba11087a25a889[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Tue Jul 19 23:24:37 2022 +0300
+
+    Можно добавить свою карточку + 6 первоначальных
+
+[33mcommit 84eb3a76d681cdb088aaae5bc0e33eb9650b03c0[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Tue Jul 19 23:22:08 2022 +0300
+
+    Можно добавить свою карточку + 6 самостоятельных.
+
+[33mcommit b1b52fed5f838bffb16f779aceebfdfc8f2041eb[m[33m ([m[1;32mfeature/place-popup[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Mon Jul 18 23:14:44 2022 +0300
+
+    Добавлен попап с картинкой и лайки
+
+[33mcommit db35ba658fd0311d52da92417668e3b84de43596[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Mon Jul 18 18:30:02 2022 +0300
+
+    Добавлены элементы к блоку elements
+
+[33mcommit 6ad9e4a17194cc921a2b673bf483d9923a8bf247[m[33m ([m[1;32mhotfix[m[33m)[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Sat Jul 9 18:46:54 2022 +0300
+
+    Исправлены ошибки второго ревью
+
+[33mcommit cd2d97054fab9e632f2f61444c58fd4878550f75[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Sat Jul 9 18:45:24 2022 +0300
+
+[33mcommit 7a6dae92a8f676dfdcd5dae1a4505a53a41ff33c[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Jul 8 03:08:38 2022 +0300
+
+    Исправлены ошибки валидатора
+
+[33mcommit fde76f94390c934c0173fd919cfeded780bca2ad[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Fri Jul 8 02:55:08 2022 +0300
+
+    Исправлены ошибки первого ревью
+
+[33mcommit 2d5f610164cb7097368ea07a9cbc28d2696c8ef0[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Thu Jul 7 21:13:13 2022 +0300
+
+    Исправлены ошибки валидатора
+
+[33mcommit d4c0af958820753bb0b2d82801fd45ad53e74fef[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Thu Jul 7 21:06:33 2022 +0300
+
+    Добавлен readme
+
+[33mcommit 2b0a3afb0a9d73cfe9d6e0d69c50f3a556a3debb[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Thu Jul 7 20:59:22 2022 +0300
+
+    Добавлены скрипты по ТЗ
+
+[33mcommit fac1b9f612af44c2d594eebd45c90db1e005b038[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Wed Jul 6 20:10:55 2022 +0300
+
+    сверстаны все блоки + адаптив
+
+[33mcommit 4e1f918d6ab2d8cac71f3a4418ffd81e47cfeda0[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Wed Jul 6 17:06:17 2022 +0300
+
+    feat: добавлен блок профайл
+
+[33mcommit 7788ab35123d5f06cd619a7596a31cee45eaf62a[m
+Author: Gleb Lyashenkov <glepka17@yandex.ru>
+Date:   Wed Jul 6 16:29:00 2022 +0300
+
+    feat: добавлен хедер + начат профайл
+
+[33mcommit 616a804ee521d361bbe62abf31056b7a88ae4bb4[m[33m ([m[1;31morigin/features[m[33m, [m[1;32mfeatures[m[33m)[m
+Author: glepka <105394707+glepka@users.noreply.github.com>
+Date:   Wed Jul 6 01:12:33 2022 +0300
+
+    Initial commit

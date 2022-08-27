@@ -1,3 +1,6 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
 // КАРТОЧКИ
 const initialCards = [
   {
@@ -28,9 +31,25 @@ const initialCards = [
 
 const ESC_CODE = "Escape";
 
-const elements = document.querySelector(".elements");
+// КОНФИГ ФОРМЫ
+const validationConfig = {
+  formSelector: ".form",
+  inputSelector: ".form__text",
+  submitButtonSelector: ".form__submit-btn",
+  inactiveButtonClass: "form__submit-btn_type_disabled",
+  inputErrorClass: ".form__input-error",
+  errorClass: ".form__text_type_error",
+};
 
-const cardTemplate = document.querySelector(".card").content;
+// ВАЛИДАЦИЯ ФОРМЫ
+const formProfile = document.querySelector(".form-profile");
+const formValidProfile = new FormValidator(validationConfig, formProfile);
+formValidProfile.enableValidation();
+const formPlace = document.querySelector(".form-place");
+const formValidPlace = new FormValidator(validationConfig, formPlace);
+formValidPlace.enableValidation();
+
+const elements = document.querySelector(".elements");
 
 //ПОПАПЫ
 const popupOverlay = document.querySelectorAll(".popup");
@@ -126,26 +145,6 @@ function handleProfileFormSubmit(evt) {
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-//  СОЗДАНИЕ КАРТОЧКИ
-
-function createCard(title, src) {
-  const card = cardTemplate.querySelector(".elements__element").cloneNode(true);
-  const cardImage = card.querySelector(".elements__image");
-  card.querySelector(".elements__title").textContent = title;
-
-  cardImage.src = src;
-  cardImage.alt = title;
-  cardImage.addEventListener("click", () => openPopupImage(title, src));
-  card
-    .querySelector(".elements__trash")
-    .addEventListener("click", () => deleteCard(card));
-  card
-    .querySelector(".elements__icon")
-    .addEventListener("click", () => toggleLike(card));
-
-  return card;
-}
-
 //ДОБАВИТЬ 6 НАЧАЛЬНЫХ КАРТОЧЕК
 function addInitialCards() {
   initialCards.forEach(function (item) {
@@ -174,7 +173,12 @@ placeForm.addEventListener("submit", addPlaceCard);
 
 // РЕНДЕР КАРТОЧЕК
 function renderCards(title, src, container, position = "prepend") {
-  const renderCard = createCard(title, src);
+  const cardItem = new Card(
+    { title, src, openPopupImage },
+    ".card-template_type_default"
+  );
+  const renderCard = cardItem.createCard();
+
   switch (position) {
     case "append":
       return container.append(renderCard);
@@ -183,19 +187,6 @@ function renderCards(title, src, container, position = "prepend") {
     default:
       return;
   }
-}
-// ПОСТАВИТЬ И УБРАТЬ ЛАЙК
-
-function toggleLike(card) {
-  const btn = card.querySelector(".elements__icon");
-  btn.classList.toggle("elements__icon_type_active");
-}
-
-// УДАЛИТЬ КАРТОЧКУ
-
-function deleteCard(card) {
-  const btn = card.querySelector(".elements__trash");
-  btn.closest(".elements__element").remove();
 }
 
 // Открыть попап места
