@@ -45,7 +45,7 @@ const ESC_CODE = "Escape";
 const elements = document.querySelector(".elements");
 
 //ПОПАПЫ
-const popupOverlay = document.querySelectorAll(".popup");
+const popupOverlays = document.querySelectorAll(".popup");
 const popupTypeProfile = document.querySelector(".popup_type_profile");
 const popupTypePlace = document.querySelector(".popup_type_place");
 const popupTypeImage = document.querySelector(".popup_type_image");
@@ -106,7 +106,7 @@ function closePopupButtonClick() {
 closePopupButtonClick();
 
 // Закрыть попап по оверлею
-popupOverlay.forEach((popup) => {
+popupOverlays.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     closePopup(evt.target);
   });
@@ -164,13 +164,10 @@ function addPlaceCard(evt) {
   evt.preventDefault();
   const title = placeInputText.value;
   const src = placeInputLink.value;
-  const buttonElement = document.querySelector(
-    ".form__submit-btn_action_create"
-  );
 
   renderCards(title, src, elements);
   closePopup(popupTypePlace);
-  buttonElement.disabled = true;
+  formValidPlace.toggleButtonState();
   evt.target.reset();
 }
 placeForm.addEventListener("submit", addPlaceCard);

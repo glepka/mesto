@@ -2,18 +2,20 @@ export class FormValidator {
   constructor(validationConfig, formElement) {
     this._validationConfig = validationConfig;
     this._formElement = formElement;
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._validationConfig.inputSelector)
+    );
+    this._submitButtonSelector = this._formElement.querySelector(
+      this._validationConfig.submitButtonSelector
+    );
   }
 
   // Добавление обработчиков всем полям формы
   _setEventListeners() {
-    const inputList = Array.from(
-      this._formElement.querySelectorAll(this._validationConfig.inputSelector)
-    );
-
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._isValid(inputElement);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   }
@@ -45,36 +47,27 @@ export class FormValidator {
 
     const errorMessage = inputElement.validationMessage;
 
-    this._formElement
-      .querySelector(this._validationConfig.inputSelector)
-      .classList.add(this._validationConfig.errorClass);
+    inputElement.classList.add(this._validationConfig.errorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._validationConfig.inputErrorClass);
   }
   // СОСТОЯНИЕ КНОПКИ ОТПРАВКИ ФОРМЫ
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._formElement
-        .querySelector(this._validationConfig.submitButtonSelector)
-        .classList.add(this._validationConfig.inactiveButtonClass);
-      this._formElement.querySelector(
-        this._validationConfig.submitButtonSelector
-      ).disabled = true;
+      this._submitButtonSelector.classList.add(
+        this._validationConfig.inactiveButtonClass
+      );
+      this._submitButtonSelector.disabled = true;
     } else {
-      this._formElement
-        .querySelector(this._validationConfig.submitButtonSelector)
-        .classList.remove(this._validationConfig.inactiveButtonClass);
-      this._formElement.querySelector(
-        this._validationConfig.submitButtonSelector
-      ).disabled = false;
+      this._submitButtonSelector.classList.remove(
+        this._validationConfig.inactiveButtonClass
+      );
+      this._submitButtonSelector.disabled = false;
     }
   }
 
   _hasInvalidInput() {
-    const inputList = Array.from(
-      this._formElement.querySelectorAll(this._validationConfig.inputSelector)
-    );
-    return inputList.some((inputElement) => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
