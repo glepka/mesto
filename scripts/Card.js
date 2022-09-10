@@ -1,8 +1,8 @@
 export class Card {
-  constructor(data, templateSelector) {
-    this._title = data.title;
-    this._src = data.src;
-    this._openPopupImage = data.openPopupImage;
+  constructor({ name, link }, templateSelector, openPopupImage) {
+    this._title = name;
+    this._src = link;
+    this._openPopupImage = openPopupImage;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
     this._cardIcon = this._cardElement.querySelector(".elements__icon");
@@ -11,10 +11,8 @@ export class Card {
 
   createCard() {
     this._setEventListeners();
-
     this._cardElement.querySelector(".elements__title").textContent =
       this._title;
-
     this._cardImage.src = this._src;
     this._cardImage.alt = this._title;
 
