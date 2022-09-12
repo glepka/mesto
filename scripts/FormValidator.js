@@ -53,7 +53,7 @@ export class FormValidator {
   }
   // СОСТОЯНИЕ КНОПКИ ОТПРАВКИ ФОРМЫ
   toggleButtonState() {
-    if (this._hasInvalidInput()) {
+    if (this._inputList.some((inputEl) => !inputEl.validity.valid)) {
       this._submitButtonSelector.classList.add(
         this._validationConfig.inactiveButtonClass
       );
@@ -64,6 +64,11 @@ export class FormValidator {
       );
       this._submitButtonSelector.disabled = false;
     }
+  }
+
+  clearValidationErrors() {
+    this._inputList.forEach(this._hideInputError, this);
+    this.toggleButtonState();
   }
 
   _hasInvalidInput() {

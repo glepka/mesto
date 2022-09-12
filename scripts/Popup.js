@@ -19,7 +19,7 @@ export class Popup {
     document.removeEventListener("keyup", this._handleEscClose);
   }
 
-  setEventListener() {
+  setEventListeners() {
     this._popup.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("popup__cross") ||
