@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <div class="page__container">
       <header class="header page__header">
-        <img src="./images/logo.svg" class="header__logo" alt="Логотип" />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          class="header__logo"
+          alt="Логотип"
+        />
       </header>
       <main>
         <section class="profile page__profile">
           <div class="profile__user">
             <img
-              src="./images/avatar.jpg"
+              src="<%=require('./images/avatar.jpg')%>"
               alt="Аватар"
               class="profile__avatar"
             />
@@ -28,7 +31,7 @@
                   aria-label="Изменить имя и профессию в описании профиля"
                 >
                   <img
-                    src="./images/pencil.svg"
+                    src="<%=require('./images/pencil.svg')%>"
                     alt="Карандаш"
                     class="profile__icon"
                   />
@@ -42,7 +45,7 @@
             type="button"
             aria-label="Добавить карточку"
           >
-            <img src="./images/plus.svg" alt="Плюс" />
+            <img src="<%=require('./images/plus.svg')%>" alt="Плюс" />
           </button>
         </section>
         <section class="elements page__elements"></section>
@@ -174,7 +177,5 @@
         </div>
       </div>
     </template>
-
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

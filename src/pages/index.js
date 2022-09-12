@@ -1,9 +1,11 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { Section } from "./Section.js";
-import { UserInfo } from "./UserInfo.js";
+import "./index.css";
+
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { Section } from "../components/Section.js";
+import { UserInfo } from "../components/UserInfo.js";
 
 // КАРТОЧКИ
 const initialCards = [
@@ -47,7 +49,7 @@ const validationConfig = {
 // ------------------------
 
 const elements = document.querySelector(".elements");
-
+const templateCardSelectorDefault = ".card-template_type_default";
 //ПОПАПЫ
 
 const popupTypeProfile = ".popup_type_profile";
@@ -68,13 +70,13 @@ const profileAbout = ".profile__subtitle";
 const inputProfileName = "name";
 const inputProfileAboit = "profession";
 
+// ИНПУТЫ ПОПАПА ДОБАВЛЕНИЯ МЕСТА
+const placeInputText = ".form__text_type_place";
+const placeInputLink = ".form__text_type_link";
+
 // ФОРМЫ
 const profileForm = document.querySelector(".form-profile");
 const placeForm = document.querySelector(".form-place");
-
-// ИНПУТЫ ПОПАПА ДОБАВЛЕНИЯ МЕСТА
-const placeInputText = document.querySelector(".form__text_type_place");
-const placeInputLink = document.querySelector(".form__text_type_link");
 
 // Классы
 // формы
@@ -95,7 +97,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (card) => {
-      const newCard = new Card(card, ".card-template_type_default", () => {
+      const newCard = new Card(card, templateCardSelectorDefault, () => {
         popupWithImage.open(card.name, card.link);
       });
       return newCard.createCard();
@@ -105,7 +107,7 @@ const cardSection = new Section(
 );
 cardSection.renderItems();
 
-// ОТРЫТЬ ПОПАП ПРОФИЛЯ
+// ПОПАП ПРОФИЛЯ
 
 const popupUserInfo = new PopupWithForm(
   popupTypeProfile,
@@ -127,15 +129,25 @@ popupProfileOpenButton.addEventListener("click", () => {
   popupUserInfo.open();
 });
 
-// ДОБАВИТЬ СОБСТВЕННУЮ КАРТОЧКУ
-function addPlaceCard(evt) {
-  evt.preventDefault();
-  const title = placeInputText.value;
-  const src = placeInputLink.value;
+// Добавить свою карточку
+const popupImg = new PopupWithForm(
+  popupTypePlace,
+  (data) => {
+    const card = {
+      name: data.place,
+      link: data.link,
+    };
 
-  renderCards(title, src, elements);
-  closePopup(popupTypePlace);
-  formValidPlace.toggleButtonState();
-  evt.target.reset();
-}
-placeForm.addEventListener("submit", addPlaceCard);
+    const newCard = new Card(card, templateCardSelectorDefault, () => {
+      popupWithImage.open(card.name, card.link);
+    });
+    cardSection.addItem(newCard.createCard());
+  },
+  () => {
+    formValidPlace.clearValidationErrors();
+  }
+);
+popupImg.setEventListeners();
+popupAddPlaceButton.addEventListener("click", () => {
+  popupImg.open();
+});
