@@ -35,6 +35,15 @@ export const validationConfig = {
   errorClass: "form__text_type_error",
 };
 
+
+// НАСТРОЙКИ API
+export const apiConfig = {
+  token: "d99936ac-0e6d-482a-94c1-06e6187f6afe",
+  cohort: "/cohort-48",
+  serverUrl: "https://mesto.nomoreparties.co/v1",
+}
+
+
 // ПЕРЕМЕННЫЕ
 // ------------------------
 
@@ -64,7 +73,7 @@ export const professionInput = document.querySelector(
 export const profileNameSelector = ".profile__name";
 export const profileAboutSelector = ".profile__subtitle";
 export const inputProfileNameSelector = "name";
-export const inputProfileAboitSelector = "profession";
+export const inputProfileAboutSelector = "profession";
 
 // ФОРМЫ
 export const profileForm = document.querySelector(".form-profile");

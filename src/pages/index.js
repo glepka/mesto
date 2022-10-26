@@ -6,6 +6,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
+// import { Api } from "../components/Api";
 import {
   initialCards,
   validationConfig,
@@ -24,7 +25,17 @@ import {
   inputProfileAboutSelector,
   profileForm,
   placeForm,
-} from "./utils/constants.js";
+  apiConfig,
+} from "../utils/constants.js";
+
+// API
+// const api = new Api(apiConfig);
+
+// const userInfo = new UserInfo({
+//   userNameSelector,
+//   userAboutSelector,
+//   userAvatarSelector,
+// });
 
 // Классы
 // формы
@@ -36,17 +47,17 @@ formValidPlace.enableValidation();
 
 // Инфо профиля
 const userInfo = new UserInfo({ profileNameSelector, profileAboutSelector });
-
+console.log(profileNameSelector);
 // Попапы
 const popupWithImage = new PopupWithImage(popupTypeImageSelector);
 popupWithImage.setEventListeners();
 
 // СОЗДАНИЕ КАРТОЧКИ
 const createCard = (item) => {
-  const newCard = new Card(item, templateCardDefaultSelector, () => {
-    popupWithImage.open(item.title, item.src);
+  const newCard = new Card(item, templateCardDefaultSelector, (title, link) => {
+    popupWithImage.open(title, link);
   });
-  return newCard.getCard();
+  return newCard.createCard();
 };
 
 const cardSection = new Section(
