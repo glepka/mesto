@@ -47,7 +47,7 @@ formValidPlace.enableValidation();
 
 // Инфо профиля
 const userInfo = new UserInfo({ profileNameSelector, profileAboutSelector });
-console.log(profileNameSelector);
+
 // Попапы
 const popupWithImage = new PopupWithImage(popupTypeImageSelector);
 popupWithImage.setEventListeners();
