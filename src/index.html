@@ -19,7 +19,7 @@
           <div class="profile__user">
             <div class="profile__img-container">
                <img
-              src="<%=require('./images/avatar.jpg')%>"
+              src="./"
               alt="Аватар"
               class="profile__avatar"
             />
@@ -198,18 +198,16 @@
           novalidate
         >
           <h2 class="form__title">Обновить аватар</h2>
-    
-          
           <label class="form__field">
             <input
               id="avatar-input"
               type="url"
               placeholder="Ссылка на картинку"
               class="form__text form__text_type_avatar"
-              name="avatar"
+              name="input-avatar"
               required
             />
-            <span class="form__input-error link-input-error"></span>
+            <span class="form__input-error avatar-input-error"></span>
           </label>
           <button
             type="submit"
@@ -220,12 +218,6 @@
         </form>
       </div>
     </div>
-
-
-
-
-
-
     <template class="card card-template_type_default">
       <div class="elements__element">
         <div class="elements__trash"></div>
