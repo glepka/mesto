@@ -7,6 +7,8 @@ export class PopupWithForm extends Popup {
     this._inputList = this._popup.querySelectorAll(".form__text");
     this._callbackSubmitForm = callbackSubmitForm;
     this._callbackOpenForm = callbackOpenForm;
+    this._submitButtonElement = this._formElement.querySelector(".form__submit-btn");
+    
   }
 
   _getInputValues() {
@@ -20,10 +22,24 @@ export class PopupWithForm extends Popup {
   setEventListeners() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._callbackSubmitForm(this._getInputValues());
+      const buttonText = this._submitButtonElement.textContent;
+      this._submitButtonElement.disabled = true;
+      this._submitButtonElement.textContent = "Сохранение...";
+
+    this._callbackSubmitForm(this._getInputValues())
+    .then(() => {
       this.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      this._submitButtonElement.textContent = buttonText;
+      this._submitButtonElement.disabled = false;
+    });
     });
     super.setEventListeners();
+  
   }
 
   close() {
