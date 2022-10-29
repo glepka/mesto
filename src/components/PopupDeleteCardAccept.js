@@ -4,16 +4,16 @@ export class PopupDeleteCardAccept extends Popup {
   constructor(popupSelector, callbackAccepting) {
     super(popupSelector);
     this._callbackAccepting = callbackAccepting;
-    this._formEl = this._popup.querySelector(".form");
-    this._submitBtnEl = this._popup.querySelector(".form__submit-btn");
+    this._formElement = this._popup.querySelector(".form");
+    this._submitButtonElement = this._popup.querySelector(".form__submit-btn");
   }
 
   setEventListeners(acceptingString) {
-    this._formEl.addEventListener("submit", (evt) => {
+    this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      const btnText = this._submitBtnEl.textContent;
-      this._submitBtnEl.disabled = true;
-      this._submitBtnEl.textContent = acceptingString;
+      const buttonText = this._submitButtonElement.textContent;
+      this._submitButtonElement.disabled = true;
+      this._submitButtonElement.textContent = acceptingString;
       this._callbackAccepting(this._data).then(() => {
         this.close();
       })
@@ -21,8 +21,8 @@ export class PopupDeleteCardAccept extends Popup {
         console.error(err);
       })
       .finally(() => {
-        this._submitBtnEl.textContent = btnText;
-        this._submitBtnEl.disabled = false;
+        this._submitButtonElement.textContent = buttonText;
+        this._submitButtonElement.disabled = false;
       });
     });
     super.setEventListeners();

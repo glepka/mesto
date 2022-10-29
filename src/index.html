@@ -160,64 +160,65 @@
             aria-label="Закрыть форму"
             type="button"
           ></button>
-          <img class="popup__image" />
+          <img class="popup__image" alt=" "/>
           <p class="popup__image-text"></p>
         </div>
       </div>
-    </div>
-    <div class="popup popup__delete-card">
-      <div class="popup__container">
-          <form class="form">
-            <h2 class="form__title">Вы уверены?</h2>
-          <button
-              type="submit"
-              class="form__submit-btn form__submit-btn_action_delete"
-            >
-              Да
-            </button>
-          </form>
+      <div class="popup popup_type_delete-card">
+        <div class="popup__container">
+            <form class="form">
+              <h2 class="form__title">Вы уверены?</h2>
+            <button
+                type="submit"
+                class="form__submit-btn form__submit-btn_action_delete"
+              >
+                Да
+              </button>
+            </form>
+            <button
+              class="popup__cross"
+              aria-label="Закрыть форму"
+              type="button"
+            ></button>
+        </div>
+      </div>
+  
+      <div class="popup popup_type_new-avatar">
+        <div class="popup__container">
           <button
             class="popup__cross"
             aria-label="Закрыть форму"
             type="button"
           ></button>
-      </div>
-    </div>
-
-    <div class="popup popup_type_new-avatar">
-      <div class="popup__container">
-        <button
-          class="popup__cross"
-          aria-label="Закрыть форму"
-          type="button"
-        ></button>
-        <form
-          class="form form-avatar"
-          name="avatar-form"
-          method="post"
-          novalidate
-        >
-          <h2 class="form__title">Обновить аватар</h2>
-          <label class="form__field">
-            <input
-              id="avatar-input"
-              type="url"
-              placeholder="Ссылка на картинку"
-              class="form__text form__text_type_avatar"
-              name="input-avatar"
-              required
-            />
-            <span class="form__input-error avatar-input-error"></span>
-          </label>
-          <button
-            type="submit"
-            class="form__submit-btn form__submit-btn_action_new-avatar"
+          <form
+            class="form form-avatar"
+            name="avatar-form"
+            method="post"
+            novalidate
           >
-            Сохранить
-          </button>
-        </form>
+            <h2 class="form__title">Обновить аватар</h2>
+            <label class="form__field">
+              <input
+                id="avatar-input"
+                type="url"
+                placeholder="Ссылка на картинку"
+                class="form__text form__text_type_avatar"
+                name="input-avatar"
+                required
+              />
+              <span class="form__input-error avatar-input-error"></span>
+            </label>
+            <button
+              type="submit"
+              class="form__submit-btn form__submit-btn_action_new-avatar"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
       </div>
     </div>
+    
     <template class="card card-template_type_default">
       <div class="elements__element">
         <div class="elements__trash"></div>
