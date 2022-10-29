@@ -24,7 +24,7 @@ export class PopupWithForm extends Popup {
       evt.preventDefault();
       const buttonText = this._submitButtonElement.textContent;
       this._submitButtonElement.disabled = true;
-      this._submitButtonElement.textContent = "Сохранение...";
+      this._submitButtonElement.textContent = "Создание...";
 
     this._callbackSubmitForm(this._getInputValues())
     .then(() => {

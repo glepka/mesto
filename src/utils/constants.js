@@ -55,7 +55,7 @@ export const popupTypeProfileSelector = ".popup_type_profile";
 export const popupTypePlaceSelector = ".popup_type_place";
 export const popupTypeImageSelector = ".popup_type_image";
 export const popupTypeAvatarSelector = ".popup_type_new-avatar"
-export const popupDelCardSelector = ".popup__delete-card"
+export const popupDelCardSelector = ".popup_type_delete-card"
 
 
 // ДЛЯ ОТКРЫТИЯ ПОПАПОВ
