@@ -75,7 +75,6 @@ api
     api
       .getInitialCards()
       .then((cards) => {
-        console.log(cards);
         cardSection.renderItems(cards.reverse());
       })
       .catch((err) => {
@@ -95,17 +94,21 @@ api
         .patchAvatar(data[inputAvatarUrl])
         .then((data) => {
           userInfo.setUserInfo(data);
-          console.log();
+          popupUserAvatar.close();
         })
         .catch((err) => {
           console.error(`Аватар не обновлен. Код ошибки: ${err}, `);
+        })
+        .finally(() =>{
+          popupUserAvatar._submitButtonElement.textContent = "Сохранить";
+          popupUserAvatar._submitButtonElement.disabled = false;
         });
     },
     () => {
       formValidAvatarUpdate.clearValidationErrors();
     }
   );
-  popupUserAvatar.setEventListeners();
+  popupUserAvatar.setEventListeners("Сохранение...");
   
   profileAvatarContainer.addEventListener("click", () => {
     popupUserAvatar.open();
@@ -119,11 +122,16 @@ api
         .patchUserInfo(data[inputUserName], data[inputUserAbout])
         .then((data) => {
           userInfo.setUserInfo(data);
+          popupUserInfo.close();
         })
         .catch((err) => {
           console.error(
             `Ошибка обновления данных пользователя, код: ${err}, `
           );
+      })
+      .finally(() =>{
+        popupUserInfo._submitButtonElement.textContent = "Сохранить";
+        popupUserInfo._submitButtonElement.disabled = false;
       });
     },
     () => {
@@ -133,7 +141,7 @@ api
       formValidProfile.clearValidationErrors();
     }
   );
-  popupUserInfo.setEventListeners();
+  popupUserInfo.setEventListeners("Сохранение...");
   popupProfileOpenButton.addEventListener("click", () => {
     popupUserInfo.open();
   });
@@ -149,17 +157,23 @@ const popupImg = new PopupWithForm(
     return api
     .postCard(data[inputCardName], data[inputCardUrl])
     .then((card) => {
+      
       cardSection.renderItem(card);
+      popupImg.close();
     })
     .catch((err) => {
       return Promise.reject(`Ошибка добавления карточки. ${err}`);
+    })
+    .finally(() =>{
+      popupImg._submitButtonElement.textContent = "Создать";
+      popupImg._submitButtonElement.disabled = false;
     });
   },
   () => {
     formValidPlace.clearValidationErrors();
   }
 );
-popupImg.setEventListeners();
+popupImg.setEventListeners("Создание...");
 popupAddPlaceButton.addEventListener("click", () => {
   popupImg.open();
 });
@@ -172,16 +186,43 @@ const cardSection = new Section((item) => {
     () => {
       popupWithImage.open(item.name, item.link);
     },
-    (card, cardId) => {
-      popupDelCard.open(card, cardId);
+    (card) => {
+      popupDelCard.open();
+      popupDelCard.setAcceptingCallback(
+      () => {
+        return api
+          .delCard(card._id)
+          .then(() => {
+            card.deleteCard(card._card);
+            popupDelCard.close();
+          })
+          .catch((err) => {
+            return Promise.reject(`${err} Ошибка удаления карточки.`);
+          })
+          .finally(() => {
+            popupDelCard._submitButtonElement.textContent = "Да";
+            popupDelCard._submitButtonElement.disabled = false;
+          });
+        }
+      )
     },
     (cardId, isLiked) => {
       if (isLiked) {
-        return api.deleteLike(cardId).catch((err) => {
+        return api.deleteLike(cardId)
+        .then((card) => {
+          newCard.setLike(card.likes);
+        })
+        .catch((err) => {
           return Promise.reject(`${err} Ошибка удаления лайка.`);
         });
       } else {
-        return api.putLike(cardId).catch((err) => {
+        return api.putLike(cardId)
+        .then(
+          (card) => {
+            newCard.setLike(card.likes);
+          }
+        )
+        .catch((err) => {
           return Promise.reject(`${err} Ошибка постановки лайка.`);
         });
       }
@@ -191,19 +232,7 @@ const cardSection = new Section((item) => {
 }, cardsContainer);
 
 
-const popupDelCard = new PopupDeleteCardAccept(
-  popupDelCardSelector,
-  ({ cardEl, cardId }) => {
-    return api
-      .delCard(cardId)
-      .then(() => {
-        cardEl.remove();
-      })
-      .catch((err) => {
-        return Promise.reject(`${err} Ошибка удаления карточки.`);
-      });
-  }
-);
+const popupDelCard = new PopupDeleteCardAccept(popupDelCardSelector);
 popupDelCard.setEventListeners("Удаление...");
 
 

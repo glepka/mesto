@@ -19,25 +19,12 @@ export class PopupWithForm extends Popup {
     return data;
   }
 
-  setEventListeners() {
+  setEventListeners(textString) {
     this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      const buttonText = this._submitButtonElement.textContent;
-      this._submitButtonElement.disabled = true;
-      this._submitButtonElement.textContent = "Создание...";
-
-    this._callbackSubmitForm(this._getInputValues())
-    .then(() => {
-      this.close();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      this._submitButtonElement.textContent = buttonText;
-      this._submitButtonElement.disabled = false;
-    });
-    });
+    evt.preventDefault();
+    this._submitButtonElement.disabled = true;
+    this._submitButtonElement.textContent = textString;
+    this._callbackSubmitForm(this._getInputValues())});
     super.setEventListeners();
   
   }
