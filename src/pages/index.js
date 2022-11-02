@@ -9,7 +9,6 @@ import { UserInfo } from "../components/UserInfo.js";
 import { Api } from "../components/Api.js";
 import { PopupDeleteCardAccept } from "../components/PopupDeleteCardAccept.js";
 import {
-  initialCards,
   validationConfig,
   cardsContainer,
   templateCardDefaultSelector,
@@ -25,8 +24,6 @@ import {
   profileNameSelector,
   profileAboutSelector,
   profileAvatarSelector,
-  inputProfileNameSelector,
-  inputProfileAboutSelector,
   profileForm,
   placeForm,
   avatarForm,
@@ -59,10 +56,6 @@ const userInfo = new UserInfo({
   profileAboutSelector,
   profileAvatarSelector,
 });
-
-
-
-
 
 
 api

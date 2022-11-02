@@ -1,29 +1,4 @@
-export const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+
 
 // КОНФИГ ФОРМЫ
 export const validationConfig = {
@@ -76,8 +51,6 @@ export const professionInput = document.querySelector(
 export const profileNameSelector = ".profile__name";
 export const profileAboutSelector = ".profile__subtitle";
 export const profileAvatarSelector = ".profile__avatar"
-export const inputProfileNameSelector = "name";
-export const inputProfileAboutSelector = "profession";
 export const profileAvatarContainer = document.querySelector (".profile__img-container");
 export const inputAvatarUrl = "input-avatar";
 export const inputUserName = 'name';
