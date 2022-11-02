@@ -21,8 +21,7 @@ export class Card {
       delBtnSelector: '.elements__trash'
     }
     
-    this._card = document.querySelector(this._templateCardDefaultSelector).content.querySelector(this._settings.cardSelector).cloneNode(true);
-      
+    this._card = document.querySelector(this._templateCardDefaultSelector).content.querySelector(this._settings.cardSelector).cloneNode(true);  
     this._titleEl = this._card.querySelector(this._settings.titleSelector);
     this._imgEl = this._card.querySelector(this._settings.imgSelector);
     this._likeBtnEl = this._card.querySelector(this._settings.likeSelector);
@@ -40,27 +39,18 @@ export class Card {
 
 
   _generateCard() {
-    console.log(document.querySelector(".card").content.querySelector(".elements__element"));
     this._titleEl.textContent = this._title;
     this._imgEl.src = this._src;
     this._imgEl.alt = this._title;
     this._likeNumberEl.innerText = this._likes.length;
     if(!this._isOwner) this._delBtnEl.remove();
-    this._renderLike();
-    
-
+    this._renderLike(this.likes);
   }
 
   _setEventsListeners() {
     this._likeBtnEl.addEventListener('click', () => {
-      this._handleLikeClick(this._id, this._isLiked())
-        .then(card => {
-          this._likes = card.likes;
-          this._renderLike();
-        })
-        .catch(err => console.error(`Ошибка ${err} внутри класса Card`));
-    });
-    this._delBtnEl.addEventListener('click', () => { this._handleTrashClick({ cardEl: this._card, cardId: this._id }) });
+    this._handleLikeClick(this._id, this._isLiked())});
+    this._delBtnEl.addEventListener('click', () => { this._handleTrashClick(this) });
     this._imgEl.addEventListener('click', () => { this._openPopupImage(this._title, this._imgSrc) });
   }
 
@@ -70,11 +60,24 @@ export class Card {
     return this._likes.some(el => el._id === this._userId);
   }
 
+
+
   _renderLike() {
+
     this._isLiked() ?
       this._likeBtnEl.classList.add(this._settings.likeActiveClass)
       : this._likeBtnEl.classList.remove(this._settings.likeActiveClass);
-    this._likeNumberEl.innerText = this._likes.length;
+      
+      this._likeNumberEl.innerText = this._likes.length;
+  }
+
+  setLike(likes){
+    this._likes = likes
+    this._renderLike();
+  }
+
+  deleteCard(card){
+    card.remove();
   }
  
 }
