@@ -83,7 +83,7 @@ api
   const popupUserAvatar = new PopupWithForm(
     popupTypeAvatarSelector,
     (data) => {
-      return api
+      api
         .patchAvatar(data[inputAvatarUrl])
         .then((data) => {
           userInfo.setUserInfo(data);
@@ -111,7 +111,7 @@ api
   const popupUserInfo = new PopupWithForm(
     popupTypeProfileSelector,
     (data) => {
-      return api
+      api
         .patchUserInfo(data[inputUserName], data[inputUserAbout])
         .then((data) => {
           userInfo.setUserInfo(data);
@@ -147,7 +147,7 @@ popupWithImage.setEventListeners();
 const popupImg = new PopupWithForm(
   popupTypePlaceSelector,
   (data) => {
-    return api
+    api
     .postCard(data[inputCardName], data[inputCardUrl])
     .then((card) => {
       
@@ -155,7 +155,7 @@ const popupImg = new PopupWithForm(
       popupImg.close();
     })
     .catch((err) => {
-      return Promise.reject(`Ошибка добавления карточки. ${err}`);
+      Promise.reject(`Ошибка добавления карточки. ${err}`);
     })
     .finally(() =>{
       popupImg._submitButtonElement.textContent = "Создать";
@@ -183,14 +183,14 @@ const cardSection = new Section((item) => {
       popupDelCard.open();
       popupDelCard.setAcceptingCallback(
       () => {
-        return api
+        api
           .delCard(card._id)
           .then(() => {
             card.deleteCard(card._card);
             popupDelCard.close();
           })
           .catch((err) => {
-            return Promise.reject(`${err} Ошибка удаления карточки.`);
+            Promise.reject(`${err} Ошибка удаления карточки.`);
           })
           .finally(() => {
             popupDelCard._submitButtonElement.textContent = "Да";
@@ -201,22 +201,22 @@ const cardSection = new Section((item) => {
     },
     (cardId, isLiked) => {
       if (isLiked) {
-        return api.deleteLike(cardId)
+        api.deleteLike(cardId)
         .then((card) => {
           newCard.setLike(card.likes);
         })
         .catch((err) => {
-          return Promise.reject(`${err} Ошибка удаления лайка.`);
+          Promise.reject(`${err} Ошибка удаления лайка.`);
         });
       } else {
-        return api.putLike(cardId)
+        api.putLike(cardId)
         .then(
           (card) => {
             newCard.setLike(card.likes);
           }
         )
         .catch((err) => {
-          return Promise.reject(`${err} Ошибка постановки лайка.`);
+          Promise.reject(`${err} Ошибка постановки лайка.`);
         });
       }
     }
