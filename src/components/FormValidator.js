@@ -71,11 +71,6 @@ export class FormValidator {
     this.toggleButtonState();
   }
 
-  _hasInvalidInput() {
-    return this._inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
-    });
-  }
 
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
